@@ -1,11 +1,9 @@
-package bytebank;
-
 public class Conta {
 
-	double saldo;
-	int agencia;
-	int numero;
-	String titular;
+	private double saldo;
+	private int agencia;
+	private int numero;
+	Cliente titular;
 
 	public void deposita(double valor) {
 
@@ -24,14 +22,18 @@ public class Conta {
 		}
 
 	}
-	
+
 	public boolean transfere(double valor, Conta destino) {
-		if(this.saldo >= valor) {
+		if (this.saldo >= valor) {
 			this.saldo -= valor;
 			destino.deposita(valor);
 			return true;
 		}
-		
+
 		return false;
+	}
+
+	public double getSaldo() {
+		return this.saldo;
 	}
 }
